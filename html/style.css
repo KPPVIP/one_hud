@@ -1,0 +1,276 @@
+* {
+    font-family: 'Comfortaa';
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+body {
+  /* background-image: url(img/back.jpg); */
+}
+
+.hud-settings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(36, 36, 36, 0.411);
+    padding-left: 10vh;
+    padding-right: 10vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    border-radius: 1rem;
+    /* text-align: center; */
+
+    z-index: 2;
+}
+
+.boxes {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.boxes input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 3rem;
+    background-color: #eee;
+    transition: 300ms;
+}
+
+.boxes:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  .boxes input:checked ~ .checkmark {
+    background-color: var(--color);
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .boxes input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .boxes .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.close {
+  position: absolute;
+  top: 2vh;
+  left: 33.5vh;
+  color:#fff;
+  padding: 1vh;
+  border-radius: 5px;
+
+  border: none;
+  outline: none;
+
+  background-color: rgba(54, 54, 54, 0.192);
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+/* HUD */
+
+.hud {
+  cursor: move;
+  z-index: 333;
+}
+
+.fa-solid {
+  color: var(--color);
+  text-shadow: 0px 0px 20px var(--color);
+}
+
+.money {
+  position: absolute;
+  top: 58vh;
+  left: 4vh;
+
+  -webkit-animation: slide 2.0s;
+  
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 5px;
+  
+  background-color: rgba(54, 54, 54, 0.466);
+  
+  color: #FFFFFF;
+
+  z-index: 333;
+}
+
+
+/* 87 $ */
+
+.bankmoney {
+  position: absolute;
+  top: 62vh;
+  left: 4vh;
+
+  -webkit-animation: slide 2.0s;
+  
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 5px;
+  
+  background-color: rgba(54, 54, 54, 0.466);
+  
+  color: #FFFFFF;
+
+  z-index: 333;
+}
+
+
+/* ID: 2 */
+
+.id {
+  position: absolute;
+  top: 66vh;
+  left: 4vh;
+
+  -webkit-animation: slide 2.0s;
+  
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 5px;
+  
+  background-color: rgba(54, 54, 54, 0.466);
+  
+  color: #FFFFFF;
+
+  z-index: 333;
+}
+
+
+/* LSPD Chief */
+
+.job {
+position: absolute;
+top: 70vh;
+left: 4vh;
+
+-webkit-animation: slide 2.0s;
+
+font-family: 'Comfortaa';
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+padding: 4px;
+border-radius: 5px;
+
+background-color: rgba(54, 54, 54, 0.466);
+
+color: #FFFFFF;
+
+z-index: 333;
+}
+
+
+/* 22:30 UHR */
+
+.clock {
+  position: absolute;
+  top: 3vh;
+  left: 4vh;
+
+  -webkit-animation: slide 2.0s;
+  
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 5px;
+  
+  background-color: rgba(54, 54, 54, 0.466);
+  
+  color: #FFFFFF;
+
+  z-index: 333;
+}
+
+@-webkit-keyframes slide {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+}
+}
+
+/* Fade */
+
+.fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 60vh;
+  filter: blur(400px);
+
+  z-index: 1;
+
+  display: none;
+}
+
+.color-picker {
+  text-align: center;
+}
+
+#colorpicker {
+  border: none;
+  background-color: transparent;
+  width: 10vh;
+  text-align: center;
+}
+
+#colorpicker:hover {
+  cursor: pointer;
+}

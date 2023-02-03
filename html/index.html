@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f1e05125ff.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="jscolor.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <title>Carwash Script made by ONEIMAGE#7424</title>
+</head>
+
+    <body>
+        <div class="hud-settings">
+            <div class="title" style="color:white; text-align: center;">
+                <i class="fa-solid fa-gears" style="color: white; text-shadow: 0px 0px 40px black;"></i>
+                <h2>Einstellungen</h2>
+                <br>
+            </div>
+            <div class="settings" style="color:rgb(231, 231, 231);">
+                <label class="boxes">
+                    <input type="checkbox" id="bargeld" name="bargeld" checked>
+                    <label for="bargeld">Bargeld</label>
+                    <span class="checkmark"></span>
+                </label>
+                    <br>
+                    <br>
+                <label class="boxes">
+                    <input type="checkbox" id="bank" name="bank" checked>
+                    <label for="bank">Bankguthaben</label>
+                    <span class="checkmark"></span>
+                </label>
+                    <br>
+                    <br>
+                <label class="boxes">
+                    <input type="checkbox" id="id" name="id" checked>
+                    <label for="id">ID Anzeige</label>
+                    <span class="checkmark"></span>
+                </label>
+                    <br>
+                    <br>
+                <label class="boxes">
+                    <input type="checkbox" id="job" name="job" checked>
+                    <label for="job">Job Anzeige</label>
+                    <span class="checkmark"></span>
+                </label>
+                    <br>
+                    <br>
+                <label class="boxes">
+                    <input type="checkbox" id="uhr" name="uhr" checked>
+                    <label for="uhr">Uhrzeit</label>
+                    <span class="checkmark"></span>
+                </label>
+                <br>
+                <br>
+                <div class="color-picker">
+                    <input type="color" id="colorpicker" value="#2196F3">
+                    <h2>Farbauswahl</h2>
+                </div>
+            </div>
+            <button class="close" onclick="closehudsettings()">
+                <i class="fa-solid fa-right-from-bracket" style="color: white; text-shadow: 0px 0px 40px black;"></i>
+            </button>
+        </div>
+
+        <div class="fade">
+                
+        </div>
+
+        <div class="hud">
+            <div class="money" id="money">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <span>Bargeld wird geladen ...</span>
+            </div>
+            <div class="bankmoney" id="bankmoney">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Bankgeld wird geladen ...</span>
+            </div>
+            <div class="id" id="playerid">
+                <i class="fa-solid fa-fingerprint"></i>
+                <span>ID wird geladen ...</span>
+            </div>
+            <div class="job" id="job">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Job wird geladen ...</span>
+            </div>
+            <div id="MyClockDisplay" class="clock" onload="showTime()">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+
+        <style>
+            :root {
+            --color: #2196F3;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function() {
+                $("#job").click(function() {
+                    $(".job").toggle(300);
+                });
+                $("#uhr").click(function() {
+                    $(".clock").toggle(300);
+                });
+                $("#bargeld").click(function() {
+                    $(".money").toggle(300);
+                });
+                $("#bank").click(function() {
+                    $(".bankmoney").toggle(300);
+                });
+                $("#id").click(function() {
+                    $(".id").toggle(300);
+                });
+            });
+
+                function showTime(){
+                    var date = new Date();
+                    var h = date.getHours(); // 0 - 23
+                    var m = date.getMinutes(); // 0 - 59
+                    var session = "Uhr";
+                    
+                    if(h == 0){
+                        h = 24;
+                    }
+                    
+                    if(h > 24){
+                        h = h - 24;
+                        session = "Uhr";
+                    }
+                    
+                    h = (h < 10) ? "0" + h : h;
+                    m = (m < 10) ? "0" + m : m;
+                    
+                    var time = h + ":" + m + " " + session;
+                    document.getElementById("MyClockDisplay").innerText = time;
+                    document.getElementById("MyClockDisplay").textContent = time;
+                    
+                    setTimeout(showTime, 1000);
+                    
+                }
+
+                showTime();
+
+                $( function() {
+                    $( ".money" ).draggable();
+                    $( ".bankmoney" ).draggable();
+                    $( ".id" ).draggable();
+                    $( ".job" ).draggable();
+                    $( ".clock" ).draggable();
+                } );
+
+                $(document).ready(function(){
+
+                $('#colorpicker').on('change', function (e) {
+
+                    var optionSelected = $("option:selected", this);
+                    var valueSelected = this.value;
+                    $(":root").css("--color", valueSelected);
+                });
+                });
+
+        </script>
+
+    </body>
+
+</html>
